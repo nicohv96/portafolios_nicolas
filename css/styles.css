@@ -52,9 +52,12 @@ h3 {
 }
 
 .webdev {
-  background-image:
-    linear-gradient(135deg,#3e454c, #212529); /* Gradiente aplicado como borde */
-    border-radius: 10px;
+  background-image: linear-gradient(
+    135deg,
+    #3e454c,
+    #212529
+  ); /* Gradiente aplicado como borde */
+  border-radius: 10px;
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
@@ -171,7 +174,7 @@ nav ul li a {
 }
 
 nav ul li a::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%; /* Mantiene el centro inicial */
   bottom: 0;
@@ -193,7 +196,7 @@ nav ul li a:hover::after {
 }
 
 nav ul li a:active {
-  transform: scale(0.95);
+  background-color: #7a7a7a4d;
 }
 
 .option-menu {
@@ -418,6 +421,10 @@ nav ul li a:active {
   transform: scale(1.06);
 }
 
+.redes a:active {
+  background-color: #7a7a7a4d;
+}
+
 .redes a:nth-of-type(2):hover img {
   filter: brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(1417%)
     hue-rotate(194deg) brightness(89%) contrast(96%);
@@ -445,7 +452,10 @@ nav ul li a:active {
 }
 
 /*===============================Sobre mi===============================*/
-.about-me, .skills {
+
+.about-me,
+.skills,
+.contact {
   height: auto;
   width: 100%;
   color: #ffffff;
@@ -457,10 +467,9 @@ nav ul li a:active {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-image:
-    linear-gradient(135deg,#3e454c, #212529),
+  background-image: linear-gradient(135deg, #3e454c, #212529),
     linear-gradient(135deg, #ff6699, #676799, #59eaf7); /* Gradiente aplicado como borde */
-    border-radius: 30px;
+  border-radius: 30px;
   background-origin: border-box;
   background-clip: content-box, border-box;
   margin-bottom: 50px;
@@ -494,7 +503,7 @@ nav ul li a:active {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 40px;
+  gap: 80px;
 }
 
 .text-about-me {
@@ -562,13 +571,9 @@ nav ul li a:active {
 .subtitle-section-skills .p-skills {
   background-color: #212529;
   border: 2px solid #4f4f4f;
-  border-radius: 20px;
+  border-radius: 30px;
   padding: 10px 30px;
   color: #ffffff;
-}
-
-.subtitle-section-skills .p-skills h4 {
-  white-space: nowrap;
 }
 
 .skills-grid {
@@ -576,13 +581,14 @@ nav ul li a:active {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 30px;
   gap: 30px;
 }
 
 .skill-card {
   box-sizing: content-box;
-  height: 90px;
-  width: 90px;
+  height: 80px;
+  width: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -614,26 +620,7 @@ nav ul li a:active {
   cursor: default;
 }
 
-
-.img-about-me {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.foto {
-  width: 200px; /* Ajusta el tamaño según tus necesidades */
-  height: 200px; /* Asegúrate de que sea un cuadrado para que se vea perfectamente redonda */
-  border-radius: 10px; /* Hace la imagen redonda */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra */
-  object-fit: cover; /* Asegura que la imagen se ajuste bien dentro del contenedor */
-  transition: transform 0.3s ease; /* Transición suave para el efecto hover */
-}
-
-.foto:hover {
-  transform: scale(1.01); /* Aumenta ligeramente el tamaño al pasar el mouse */
-}
+/*===============================Esfera===============================*/
 
 .content-sphere {
   height: auto;
@@ -661,6 +648,7 @@ nav ul li a:active {
   color: white;
   font-family: Arial, sans-serif;
   will-change: transform;
+  cursor: default;
 }
 
 @keyframes spin {
@@ -670,6 +658,218 @@ nav ul li a:active {
   to {
     transform: rotateY(360deg);
   }
+}
+
+/*===============================Contacto===============================*/
+
+.content-contact {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 80px;
+}
+
+.img-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 400px;
+  overflow: hidden;
+}
+
+.img-contact img {
+  height: 500px;
+  width: 400px;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 1));
+}
+
+.form-container {
+  width: 45%;
+  background-color: #212529a9;
+  padding: 20px 40px;
+  border-radius: 10px;
+  border-top: 5px solid #ff6699;
+  border-right: 1px solid #4f4f4f;
+  border-bottom: 1px solid #4f4f4f;
+  border-left: 1px solid #4f4f4f;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  padding: 10px 0 30px 0;
+  font-family: "varino";
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline-color: #c2dbff; /* Color del contorno al enfocar */
+  outline-style: solid; /* Estilo del contorno (sólido, punteado, etc.) */
+  outline-width: 3px; /* Grosor del contorno */
+  outline-offset: 0; /* Espacio entre el contorno y el borde del elemento */
+}
+
+.form-group textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.form-group:last-child {
+  display: flex;
+  justify-content: right;
+  padding: 15px 0 10px 0;
+  margin: 0;
+}
+
+/* Boton para enviar */
+
+.btn {
+  --border-color: linear-gradient(-45deg, #ff6699, #676799, #59eaf7);
+  --border-width: 0.125em;
+  --curve-size: 0.5em;
+  --blur: 30px;
+  --bg: #080312;
+  --color: #ffffff;
+  color: var(--color);
+  cursor: pointer;
+  /* use position: relative; so that BG is only for .btn */
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  place-content: center;
+  padding: 0.5em 1.5em;
+  font-size: 17px;
+  border: 0;
+  text-transform: uppercase;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+  clip-path: polygon(
+    /* Top-left */ 0% var(--curve-size),
+    var(--curve-size) 0,
+    /* top-right */ 100% 0,
+    100% calc(100% - var(--curve-size)),
+    /* bottom-right 1 */ calc(100% - var(--curve-size)) 100%,
+    /* bottom-right 2 */ 0 100%
+  );
+  transition: color 250ms;
+}
+
+.btn::after,
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.btn::before {
+  background: var(--border-color);
+  background-size: 300% 300%;
+  animation: move-bg7234 5s ease infinite;
+  z-index: -2;
+}
+
+@keyframes move-bg7234 {
+  0% {
+    background-position: 31% 0%;
+  }
+
+  50% {
+    background-position: 70% 100%;
+  }
+
+  100% {
+    background-position: 31% 0%;
+  }
+}
+
+.btn::after {
+  background: var(--bg);
+  z-index: -1;
+  clip-path: polygon(
+    /* Top-left */ var(--border-width)
+      calc(var(--curve-size) + var(--border-width) * 0.5),
+    calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+    /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+    calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+    /* bottom-right 1 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width)),
+    /* bottom-right 2 */ var(--border-width) calc(100% - var(--border-width))
+  );
+  transition: clip-path 500ms;
+}
+
+.btn:where(:hover, :focus)::after {
+  clip-path: polygon(
+    /* Top-left */ calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+    calc(100% - var(--border-width)) var(--border-width),
+    /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+    calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+    /* bottom-right 1 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width)),
+    /* bottom-right 2 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width))
+  );
+  transition: 200ms;
+}
+
+.btn:where(:hover, :focus) {
+  color: #fff;
+}
+
+/*===============================Footer===============================*/
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  background-color: #212529a9;
+  color: #ffffff;
+  border-top: 2px solid #4f4f4f;
+  padding-top: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.content-footer {
+  width: 100%;
+}
+
+.copyright {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid #4f4f4f;
 }
 
 /*===============================Media Query===============================*/
@@ -710,13 +910,33 @@ nav ul li a:active {
     justify-content: center;
     flex-direction: column;
   }
-  
+
   .text-about-me {
     width: 100%;
   }
-  
+
   .stats-container {
     width: 100%;
+  }
+
+  .content-contact {
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+
+  .form-container {
+    max-width: none;
+    width: 100%;
+  }
+
+  .img-contact {
+    height: 300px;
+    width: 280px;
+  }
+
+  .img-contact img {
+    height: 300px;
+    width: 280px;
   }
 }
 
@@ -733,6 +953,31 @@ nav ul li a:active {
   .content-about-me {
     justify-content: center;
   }
+
+  .skills-grid {
+    gap: 20px;
+  }
+
+  .stat-card {
+    padding: 15px;
+    width: 100px;
+  }
+
+  .stat-card h2 {
+    font-size: 1.5em;
+  }
+  
+  .stat-card p {
+    font-size: .7em;
+  }
+
+  .subtitle-section-skills .p-skills h4 {
+    text-align: center;
+  }
+
+  .form-container h2 {
+    font-size: 1em;
+  }
 }
 
 /*===============================Estilos para boton subir===============================*/
@@ -745,27 +990,26 @@ nav ul li a:active {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 15px 15px;
+  padding: 12px 12px;
   background-color: #212529b7;
   color: #ffffff;
-  border-radius: 50%;
-  border: #8d8d8d6e 1px solid;
+  border-radius: 10px;
+  border: 2px solid #4f4f4f;
   cursor: pointer;
   box-shadow: 0px 2px 5px #00000080;
   font-size: 16px;
   opacity: 0;
   visibility: hidden;
-  transform: rotate(40deg);
   transition: 0.5s ease;
 }
 
 .top-button:hover {
-  background-color: #2a2e33;
-  transform: rotate(0deg) scale(1.1);
+  background-color: #5c5c5c4d;
 }
 
 .top-button:active {
   transform: scale(1);
+  background-color: #7a7a7a4d;
 }
 
 .top-button:hover svg {

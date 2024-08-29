@@ -41,12 +41,11 @@ window.addEventListener("scroll", () => {
 
 //==============================Esfera==============================
 const words = [
-  'Python', 'JavaScript', 'Java', 'C++', 'Ruby', 'PHP', 'Swift', 'Go', 'Kotlin', 'TypeScript',
-  'C#', 'Scala', 'Rust', 'Haskell', 'Perl', 'Lua', 'Objective-C', 'R', 'MATLAB', 'Dart'
+  'Python', 'JavaScript', 'Java', 'PHP', 'HTML', 'CSS', 'Flask', 'MySQL', 'Laravel', 'Vue.js', 'Git', 'Bootstrap',
 ];
 
 const sphere = document.getElementById('sphere');
-const radius = 120;
+const radius = 130;
 
 words.forEach((word, index) => {
   const theta = Math.acos(-0.8 + (1.6 * index) / (words.length - 1)); // Ajustar el rango de theta
