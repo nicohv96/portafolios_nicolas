@@ -448,7 +448,7 @@ nav ul li a:active {
 
 .animated-image {
   position: absolute;
-  animation: moveImage 10s infinite alternate ease;
+  animation: moveImage 8s infinite alternate ease;
 }
 
 /*===============================Sobre mi===============================*/
