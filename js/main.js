@@ -41,19 +41,22 @@ window.addEventListener("scroll", () => {
 
 //==============================Esfera==============================
 const words = [
-  'Python', 'JavaScript', 'Java', 'PHP', 'HTML', 'CSS', 'Flask', 'MySQL', 'Laravel', 'Vue.js', 'Git', 'Bootstrap',
+  'Python', 'JavaScript', 'Java', 'PHP', 'HTML', 'CSS', 'Flask', 'MySQL', 'Laravel', 'Vue.js', 'Git', 'Bootstrap'
 ];
 
 const sphere = document.getElementById('sphere');
-const radius = 130;
+const radius = 120;
+const wordElements = [];
+const numWords = words.length;
 
 words.forEach((word, index) => {
-  const theta = Math.acos(-0.8 + (1.6 * index) / (words.length - 1)); // Ajustar el rango de theta
-  const phi = Math.sqrt(words.length * Math.PI) * theta;
+  // Distribución uniforme usando la fórmula de la esfera de Fibonacci
+  const phi = Math.acos(1 - (2 * (index + 0.5)) / numWords);
+  const theta = Math.PI * (1 + Math.sqrt(5)) * (index + 0.5);
 
-  const x = radius * Math.sin(theta) * Math.cos(phi);
-  const y = radius * Math.sin(theta) * Math.sin(phi);
-  const z = radius * Math.cos(theta);
+  const x = radius * Math.sin(phi) * Math.cos(theta);
+  const y = radius * Math.sin(phi) * Math.sin(theta);
+  const z = radius * Math.cos(phi);
 
   const wordElement = document.createElement('div');
   wordElement.className = 'word';
@@ -61,24 +64,41 @@ words.forEach((word, index) => {
   wordElement.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
 
   sphere.appendChild(wordElement);
+  wordElements.push(wordElement);
 });
 
-function updateOrientation() {
-  const words = document.querySelectorAll('.word');
-  words.forEach(word => {
-      const transform = word.style.transform;
-      const coordinates = transform.match(/translate3d\((.*)\)/)[1].split(', ').map(parseFloat);
-      const [x, y, z] = coordinates;
+let angleX = 0;
+let angleY = 0;
 
-      const angleY = Math.atan2(x, z);
-      const angleX = Math.atan2(y, Math.sqrt(x * x + z * z));
+function rotateSphere() {
+  angleX += 0.01; // Velocidad de rotación en X
+  angleY += 0.02; // Velocidad de rotación en Y
 
-      word.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateY(${angleY}rad) rotateX(${-angleX}rad)`;
+  sphere.style.transform = `rotateX(${angleX}rad) rotateY(${angleY}rad)`;
+
+  wordElements.forEach(word => {
+    const transform = word.style.transform;
+    const coordinates = transform.match(/translate3d\((.*)\)/)[1].split(', ').map(parseFloat);
+    const [x, y, z] = coordinates;
+
+    // Mantener la orientación de las palabras frente a la cámara
+    const angleYWord = Math.atan2(x, z);
+    const angleXWord = Math.atan2(y, Math.sqrt(x * x + z * z));
+
+    word.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateY(${angleYWord}rad) rotateX(${-angleXWord}rad)`;
   });
+
+  requestAnimationFrame(rotateSphere);
 }
 
-updateOrientation();
-setInterval(updateOrientation, 50);
+rotateSphere(); // Inicia la rotación
+
+
+document.querySelectorAll('.btn').forEach(button => {
+  button.addEventListener('click', function() {
+    this.blur(); // Quita el foco del botón después del clic
+  });
+});
 
 //==============================Particulas==============================
 particlesJS(

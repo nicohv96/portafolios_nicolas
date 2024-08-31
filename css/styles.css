@@ -1,3 +1,12 @@
+:root {
+  --border-radius: 5px;
+  --border-color: #333644;
+  --text-color-hover: #59eaf7;
+  --background-color-hover: #1c1f2ed0;
+  --background-color-1: #121420d0;
+  --background-color-active: #25283ad0;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -33,9 +42,11 @@ h3 {
 /*===============================Estilos genericos===============================*/
 
 .text-gradient {
-  background-image: linear-gradient(135deg, #ff6699, #676799, #59eaf7);
+  background-image: linear-gradient(90deg, rgba(255,102,153,1) 10%, rgba(103,103,153,1) 30%, rgba(89,234,247,1) 50%, rgba(103,103,153,1) 70%, rgba(255,102,153,1) 90%);
+  background-size: 200% 200%;
   -webkit-background-clip: text; /* Safari/Chrome */
   background-clip: text;
+  animation: mover-gradiente 5s infinite alternate linear;
   color: transparent; /* Oculta el texto original */
 }
 
@@ -46,18 +57,15 @@ h3 {
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: -1;
+  z-index: -10;
 
   animation: animateGradient 5s infinite alternate;
 }
 
 .webdev {
-  background-image: linear-gradient(
-    135deg,
-    #3e454c,
-    #212529
-  ); /* Gradiente aplicado como borde */
-  border-radius: 10px;
+  background-color: #131521;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
@@ -80,7 +88,7 @@ h3 {
   font-family: "varino", sans-serif;
   color: #ffffff;
   z-index: 999;
-  transition: 0.5s ease;
+  transition: background-color .5s ease, box-shadow .5s ease;
   overflow: hidden;
 }
 
@@ -91,22 +99,23 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 0;
+  margin-top: 10px;
   padding: 0 50px;
-  border-radius: 5px;
-  transition: 0.5s ease;
+  border-radius: var(--border-radius);
   overflow: hidden;
+  transition: .5s ease;
 }
 
 .header.down {
-  background: #212529fb; /* Color blanco con opacidad */
+  background-color: #121420f1;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  transition: 0.5s ease;
+  border-bottom: 2px solid var(--border-color);
+  transition: background-color .5s ease, box-shadow .5s ease;
 }
 
 .header.down .content-header {
   margin: 0;
-  transition: 0.5s ease;
+  transition: .5s ease;
 }
 
 .nav {
@@ -122,11 +131,10 @@ h3 {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  transition: 0.2s ease;
+  transition: transform .2s ease;
 }
 
 .brand:hover {
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
   transform: scale(1.06);
 }
 
@@ -135,8 +143,7 @@ h3 {
 }
 
 .brand:hover img {
-  filter: brightness(0) saturate(100%) invert(82%) sepia(53%) saturate(1598%)
-    hue-rotate(157deg) brightness(107%) contrast(94%);
+  filter: brightness(0) saturate(100%) invert(82%) sepia(53%) saturate(1598%) hue-rotate(157deg) brightness(107%) contrast(94%);
 }
 
 .nav {
@@ -168,35 +175,36 @@ nav ul li a {
   text-decoration: none;
   white-space: nowrap;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   position: relative;
+  overflow: hidden;
   transition: 0.2s ease;
 }
 
 nav ul li a::after {
   content: "";
   position: absolute;
-  left: 50%; /* Mantiene el centro inicial */
+  left: 50%;
   bottom: 0;
   width: 100%;
   height: 2px;
-  background-color: #fff; /* Color del subrayado */
-  transform: translateX(-50%) scaleX(0); /* Comienza desde el centro con escala 0 */
-  transform-origin: center; /* Origen de la transformación */
-  transition: transform 0.3s ease; /* Transición suave solo en la transformación */
+  background-color: #ffffff;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform .3s ease;
 }
 
 nav ul li a:hover {
-  color: #59eaf7;
-  background-color: #5c5c5c4d;
+  color: var(--text-color-hover);
+  background-color: var(--background-color-hover);
 }
 
 nav ul li a:hover::after {
-  transform: translateX(-50%) scaleX(1); /* Expande el subrayado desde el centro */
+  transform: translateX(-50%) scaleX(1);
 }
 
 nav ul li a:active {
-  background-color: #7a7a7a4d;
+  background-color: var(--background-color-active);
 }
 
 .option-menu {
@@ -220,7 +228,7 @@ nav ul li a:active {
   align-items: center;
   padding: 10px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   transition: 0.2s linear;
   z-index: 1010; /* Asegura que el botón esté por encima del menú */
 }
@@ -231,11 +239,11 @@ nav ul li a:active {
 
 .menu-toggle:hover {
   transform: scale(1.05);
-  background-color: #5c5c5c4d;
+  background-color: var(--background-color-hover);
 }
 
 .menu-toggle:hover .bar {
-  background-color: #59eaf7;
+  background-color: var(--text-color-hover);
 }
 
 .menu-toggle:active {
@@ -248,7 +256,7 @@ nav ul li a:active {
   height: 3px;
   background-color: rgb(255, 255, 255);
   margin: 4px 0;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   transition: transform 0.3s ease;
 }
 
@@ -271,7 +279,7 @@ nav ul li a:active {
   top: 0;
   left: 0;
   position: fixed;
-  background-color: #212529;
+  background-color: #131521;
   color: var(--color-white);
   z-index: 1005; /* Asegura que el menú esté por encima de otros elementos */
   overflow: hidden;
@@ -318,8 +326,8 @@ nav ul li a:active {
 }
 
 .burger-menu li a:hover {
-  color: #59eaf7;
-  background-color: #5c5c5c4d;
+  color: var(--text-color-hover);
+  background-color: var(--background-color-hover);
   transform: scale(1.1);
   font-size: 1rem;
 }
@@ -412,22 +420,21 @@ nav ul li a:active {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   transition: 0.2s ease;
 }
 
 .redes a:hover {
-  background-color: #5c5c5c4d;
+  background-color: var(--background-color-hover);
   transform: scale(1.06);
 }
 
 .redes a:active {
-  background-color: #7a7a7a4d;
+  background-color: var(--background-color-active);
 }
 
-.redes a:nth-of-type(2):hover img {
-  filter: brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(1417%)
-    hue-rotate(194deg) brightness(89%) contrast(96%);
+.redes a:hover img {
+  filter: brightness(0) saturate(100%) invert(82%) sepia(53%) saturate(1598%) hue-rotate(157deg) brightness(107%) contrast(94%);
 }
 
 .banner-img {
@@ -448,13 +455,19 @@ nav ul li a:active {
 
 .animated-image {
   position: absolute;
-  animation: moveImage 8s infinite alternate ease;
+  animation: moveImage 8s infinite alternate linear;
 }
 
 /*===============================Sobre mi===============================*/
 
+.hero-section {
+  scroll-margin-top: 100px;
+}
+
 .about-me,
+.education,
 .skills,
+.projects,
 .contact {
   height: auto;
   width: 100%;
@@ -463,25 +476,51 @@ nav ul li a:active {
 }
 
 .title-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 50px;
   width: 100%;
-  background-image: linear-gradient(135deg, #3e454c, #212529),
-    linear-gradient(135deg, #ff6699, #676799, #59eaf7); /* Gradiente aplicado como borde */
-  border-radius: 30px;
-  background-origin: border-box;
-  background-clip: content-box, border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  border-radius: var(--border-radius);
   margin-bottom: 50px;
-  padding: 2px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background-color: #121420;
+}
+
+/* Pseudo-elemento para bordes con gradiente */
+.title-section::before {
+  content: "";
+  position: absolute;
+  top: -2px; /* Ajuste para cubrir los bordes */
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: var(--border-radius);
+  background-image: linear-gradient(90deg, rgba(255,102,153,1) 10%, rgba(103,103,153,1) 30%, rgba(89,234,247,1) 50%, rgba(103,103,153,1) 70%, rgba(255,102,153,1) 90%);
+  background-size: 200% 200%; /* Tamaño del fondo para animación */
+  z-index: -1; /* Asegura que el pseudo-elemento quede detrás del contenido */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  animation: mover-gradiente 5s infinite alternate linear;
+}
+
+/* Definición de la animación del gradiente */
+@keyframes mover-gradiente {
+  0% {
+      background-position: 0% 0%;
+  }
+  100% {
+      background-position: 100% 100%;
+  }
 }
 
 .title-section h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px; /* Opcional: redondear esquinas */
+  border-radius: var(--border-radius); 
   width: 200px;
   padding: 10px;
   font-size: 1.5em;
@@ -493,8 +532,9 @@ nav ul li a:active {
   align-items: center;
   width: 100%;
   padding: 10px;
-  border-bottom: 1px solid #212529;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 10px;
+  font-size: 1.2rem;
 }
 
 .content-about-me {
@@ -533,7 +573,7 @@ nav ul li a:active {
   background-color: #676799;
   color: #ffffff;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   width: 130px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -557,9 +597,53 @@ nav ul li a:active {
   cursor: default;
 }
 
+/*===============================Educacion===============================*/
+
+.content-education {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.content-text-educaction {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.content-text-educaction h4 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  max-width: 965px;
+  width: 100%;
+}
+
+.content-text-educaction p {
+  margin-bottom: 10px;
+}
+
+.content-text-educaction ul li {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.first-section, .second-section {
+  width: 45%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  text-align: left;
+}
+
 /*===============================Habilidades===============================*/
 
-.subtitle-section-skills {
+.subtitle-section-skills, .subtitle-section-education {
   box-sizing: content-box;
   display: flex;
   justify-content: center;
@@ -568,15 +652,16 @@ nav ul li a:active {
   margin-bottom: 30px;
 }
 
-.subtitle-section-skills .p-skills {
-  background-color: #212529;
-  border: 2px solid #4f4f4f;
-  border-radius: 30px;
+.subtitle-section-skills .p-skills, .subtitle-section-education .p-education {
+  background-color: #131521;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
   padding: 10px 30px;
   color: #ffffff;
 }
 
 .skills-grid {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -593,9 +678,9 @@ nav ul li a:active {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 2px solid #4f4f4f;
+  border: 2px solid var(--border-color);
   border-radius: 50%;
-  background: radial-gradient(#7a8c96, #465058, #212529, #191c1f);
+  background: radial-gradient(#515463, #32364b, #1c1f2e, #121420);
   padding: 20px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -622,16 +707,29 @@ nav ul li a:active {
 
 /*===============================Esfera===============================*/
 
+.content-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .content-sphere {
   height: auto;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  background: radial-gradient(#333644, #25283a, #1c1f2e, #121420);
+  padding: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .sphere {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 300px;
   height: 300px;
@@ -660,7 +758,146 @@ nav ul li a:active {
   }
 }
 
+/*===============================Proyectos===============================*/
+
+.content-projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  gap: 30px;
+}
+
+.projects-grid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  /* margin-bottom: 30px; */
+  gap: 80px;
+}
+
+.project-card {
+  width: 300px;
+  background-color: #212529a9;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.project-img {
+  width: 100%;
+  height: 150px;
+  background-color: #ffffff;
+}
+
+.project-img img {
+  aspect-ratio: 16 / 9;
+}
+
+.content-project-card {
+  padding: 20px;
+}
+
+.project-title {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.project-desc {
+  margin-bottom: 20px;
+}
+
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-footer a {
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+/* From Uiverse.io by yashlikescode */ 
+.card {
+  position: relative;
+  width: 300px;
+  height: 250px;
+  background-image: url('../img/fondo-card.webp'); /* Cambia esto a la ruta de tu imagen */
+  background-size: cover; /* Ajusta la imagen para que cubra todo el botón */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center; /* Centra la imagen en el botón */
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card svg {
+  width: 48px;
+  fill: #333;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #171a1dd3;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover .card-content {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 1;
+}
+
+.card-title {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: default;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 1.4;
+  cursor: default;
+}
+
+.card:hover svg {
+  scale: 0;
+}
+
+
 /*===============================Contacto===============================*/
+
+.contact {
+  margin-bottom: 120px;
+}
 
 .content-contact {
   position: relative;
@@ -688,15 +925,16 @@ nav ul li a:active {
 
 .form-container {
   width: 45%;
-  background-color: #212529a9;
+  background-color: var(--background-color-1);
   padding: 20px 40px;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   border-top: 5px solid #ff6699;
-  border-right: 1px solid #4f4f4f;
-  border-bottom: 1px solid #4f4f4f;
-  border-left: 1px solid #4f4f4f;
+  border-right: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  border-left: 2px solid var(--border-color);
   max-width: 500px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .form-container h2 {
@@ -718,21 +956,21 @@ nav ul li a:active {
 .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #dee2e6;
-  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
   font-size: 16px;
 }
 
 input:focus-visible,
 textarea:focus-visible {
-  outline-color: #c2dbff; /* Color del contorno al enfocar */
+  outline-color: #333644; /* Color del contorno al enfocar */
   outline-style: solid; /* Estilo del contorno (sólido, punteado, etc.) */
   outline-width: 3px; /* Grosor del contorno */
   outline-offset: 0; /* Espacio entre el contorno y el borde del elemento */
 }
 
 .form-group textarea {
-  resize: vertical;
+  resize: none;
   height: 100px;
 }
 
@@ -745,6 +983,26 @@ textarea:focus-visible {
 
 /* Boton para enviar */
 
+.btn-sec {
+  color: #ffffff;
+  --curve-size: 0.5em;
+  cursor: pointer;
+  padding: 0.5em 1.5em;
+  font-size: 17px;
+  border: 0;
+  text-transform: uppercase;
+  background-color: #5e6f7c;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+  clip-path: polygon(
+    0% var(--curve-size),
+    var(--curve-size) 0,
+    100% 0,
+    100% calc(100% - var(--curve-size)),
+    calc(100% - var(--curve-size)) 100%,
+    0 100%
+  );
+}
+
 .btn {
   --border-color: linear-gradient(-45deg, #ff6699, #676799, #59eaf7);
   --border-width: 0.125em;
@@ -754,7 +1012,6 @@ textarea:focus-visible {
   --color: #ffffff;
   color: var(--color);
   cursor: pointer;
-  /* use position: relative; so that BG is only for .btn */
   position: relative;
   isolation: isolate;
   display: inline-grid;
@@ -765,12 +1022,12 @@ textarea:focus-visible {
   text-transform: uppercase;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
   clip-path: polygon(
-    /* Top-left */ 0% var(--curve-size),
+    0% var(--curve-size),
     var(--curve-size) 0,
-    /* top-right */ 100% 0,
+    100% 0,
     100% calc(100% - var(--curve-size)),
-    /* bottom-right 1 */ calc(100% - var(--curve-size)) 100%,
-    /* bottom-right 2 */ 0 100%
+    calc(100% - var(--curve-size)) 100%,
+    0 100%
   );
   transition: color 250ms;
 }
@@ -807,32 +1064,29 @@ textarea:focus-visible {
   background: var(--bg);
   z-index: -1;
   clip-path: polygon(
-    /* Top-left */ var(--border-width)
+    var(--border-width)
       calc(var(--curve-size) + var(--border-width) * 0.5),
     calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
-    /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+    calc(100% - var(--border-width)) var(--border-width),
     calc(100% - var(--border-width))
       calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
-    /* bottom-right 1 */
       calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
       calc(100% - var(--border-width)),
-    /* bottom-right 2 */ var(--border-width) calc(100% - var(--border-width))
+      var(--border-width) calc(100% - var(--border-width))
   );
   transition: clip-path 500ms;
 }
 
 .btn:where(:hover, :focus)::after {
   clip-path: polygon(
-    /* Top-left */ calc(100% - var(--border-width))
-      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+    calc(100% - var(--border-width))
+    calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
     calc(100% - var(--border-width)) var(--border-width),
-    /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+    calc(100% - var(--border-width)) var(--border-width),
     calc(100% - var(--border-width))
       calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
-    /* bottom-right 1 */
       calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
       calc(100% - var(--border-width)),
-    /* bottom-right 2 */
       calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
       calc(100% - var(--border-width))
   );
@@ -840,7 +1094,7 @@ textarea:focus-visible {
 }
 
 .btn:where(:hover, :focus) {
-  color: #fff;
+  color: #ffffff;
 }
 
 /*===============================Footer===============================*/
@@ -851,25 +1105,36 @@ textarea:focus-visible {
   align-items: center;
   width: 100%;
   height: auto;
-  background-color: #212529a9;
+  background-color: var(--background-color-1);
   color: #ffffff;
-  border-top: 2px solid #4f4f4f;
-  padding-top: 20px;
+  border-top: 2px solid var(--border-color);
+  padding-top: 40px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .content-footer {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content-footer h4 {
+  font-size: 1rem;
+  text-align: center;
+  font-family: "varino";
 }
 
 .copyright {
   width: 100%;
-  margin-top: 20px;
   padding: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 2px solid #4f4f4f;
+  border-top: 2px solid var(--border-color);
 }
 
 /*===============================Media Query===============================*/
@@ -915,7 +1180,19 @@ textarea:focus-visible {
     width: 100%;
   }
 
+  .content-text-educaction {
+    justify-content: center;
+  }
+
+  .first-section, .second-section {
+    width: 100%;
+  }
+
   .stats-container {
+    width: 100%;
+  }
+
+  .project-card {
     width: 100%;
   }
 
@@ -991,31 +1268,29 @@ textarea:focus-visible {
   bottom: 20px;
   right: 20px;
   padding: 12px 12px;
-  background-color: #212529b7;
+  background-color: var(--background-color-1);
   color: #ffffff;
-  border-radius: 10px;
-  border: 2px solid #4f4f4f;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
   cursor: pointer;
   box-shadow: 0px 2px 5px #00000080;
-  font-size: 16px;
   opacity: 0;
   visibility: hidden;
-  transition: 0.5s ease;
+  transition: background-color .5s ease, transform .5s ease;
 }
 
 .top-button:hover {
-  background-color: #5c5c5c4d;
+  background-color: var(--background-color-hover);
 }
 
 .top-button:active {
   transform: scale(1);
-  background-color: #7a7a7a4d;
+  background-color: var(--background-color-active);
 }
 
 .top-button:hover svg {
-  filter: brightness(0) saturate(100%) invert(82%) sepia(53%) saturate(1598%)
-    hue-rotate(157deg) brightness(107%) contrast(94%);
-  transform: rotate(0deg) scale(1.1);
+  filter: brightness(0) saturate(100%) invert(82%) sepia(53%) saturate(1598%) hue-rotate(157deg) brightness(107%) contrast(94%);
+  transform: scale(1.1);
 }
 
 .top-button.show {
@@ -1056,5 +1331,5 @@ textarea:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4f4f4f;
+  background: var(--border-color);
 }
