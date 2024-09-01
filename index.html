@@ -6,6 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Portafolio - Nicolas Villalba</title>
    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+   <link rel="stylesheet" href="./assets/sweetalert2/css/sweetalert2.min.css">
    <link rel="stylesheet" href="./css/styles.css">
 </head>
 
@@ -341,18 +342,18 @@
             </div>
             <div class="form-container">
                <h2>¡Contactemos!</h2>
-               <form action="tu_procesador_de_formulario.php" method="post">
+               <form id="form-contact" method="post">
                   <div class="form-group">
                      <label for="name">Nombre:</label>
-                     <input type="text" id="name" name="name" placeholder="Ingrese su nombre" required>
+                     <input type="text" id="name" name="name" placeholder="Ingrese su nombre">
                   </div>
                   <div class="form-group">
                      <label for="email">Email:</label>
-                     <input type="email" id="email" name="email" placeholder="Ingrese su correo" required>
+                     <input type="email" id="email" name="email" placeholder="Ingrese su correo">
                   </div>
                   <div class="form-group">
                      <label for="message">Mensaje:</label>
-                     <textarea id="message" name="message" required></textarea>
+                     <textarea id="message" name="message"></textarea>
                   </div>
                   <div class="form-group">
                      <button class="btn" type="submit">Enviar</button>
@@ -366,7 +367,7 @@
 
    <footer class="footer">
       <div class="content-footer">
-         <h4>Antes de irte, no te olvides de visitar:</h4>
+         <h4>Antes de irte, no te olvides de ver:</h4>
          <div class="redes">
             <a href="https://github.com/nicohv96" target="_blank" title="GitHub">
                <img src="img/github.svg" alt="Imagen SVG" width="35" height="35">
@@ -378,9 +379,9 @@
                <img src="img/cv.svg" alt="Imagen SVG" width="35" height="35">
             </a>
          </div>
-         <div class="copyright">
-            <p>Diseñado y desarrollado por Nicolas Villalba</p>
-         </div>
+      </div>
+      <div class="copyright">
+         <p>Diseñado y desarrollado por Nicolas Villalba</p>
       </div>
    </footer>
 
@@ -397,6 +398,7 @@
 
    <!-- scripts -->
    <script src="./js/particles.min.js"></script>
+   <script src="./assets/sweetalert2/js/sweetalert2.all.min.js"></script>
    <script src="./js/main.js"></script>
 </body>
 

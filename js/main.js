@@ -38,6 +38,133 @@ window.addEventListener("scroll", () => {
   topButton.classList.toggle("show",window.scrollY>0);
 });
 
+//==============================Email==============================
+
+document.getElementById('form-contact').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  if (!validateForm(name, email, message)) {
+    return;
+  }
+
+  Swal.fire({
+    toast: true,
+    position: 'top-end',
+    title: 'Procesando la solicitud',
+    showConfirmButton: false,
+    didOpen: () => {
+      Swal.showLoading();
+    }
+  });
+
+  fetch("https://formsubmit.co/ajax/7676a43ac97754cd00a29285390e48e1", {
+    method: "POST",
+    headers: { 
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      Nombre: name,
+      Email: email,
+      Mensaje: message
+    })
+  })
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    if (data.success === "false") {
+      throw new Error(data.message);
+    }
+    
+    Swal.close();
+
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'success',
+      title: 'Formulario enviado con éxito',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true
+    });
+    document.getElementById('form-contact').reset();
+    removeErrorStyles();
+  })
+  .catch(error => {
+    Swal.close();
+
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'error',
+      title: 'Hubo un error al enviar el formulario. Intenta de nuevo.',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true
+    });
+  });
+});
+
+// Función para validar el formulario
+function validateForm(name, email, message) {
+  let isValid = true;
+
+  removeErrorStyles();
+
+  if (!name) {
+    addErrorStyle(document.getElementById('name'));
+    isValid = false;
+  }
+
+  if (!email || !validateEmail(email)) {
+    addErrorStyle(document.getElementById('email'));
+    isValid = false;
+  }
+
+  if (!message) {
+    addErrorStyle(document.getElementById('message'));
+    isValid = false;
+  }
+
+  if (!isValid) {
+    showValidationError('Por favor, corrige los errores en los campos resaltados.');
+  }
+
+  return isValid;
+}
+
+function validateEmail(email) {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
+}
+
+function showValidationError(message) {
+  Swal.fire({
+    icon: 'error',
+    title: 'Error de validación',
+    text: message,
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true
+  });
+}
+
+function addErrorStyle(field) {
+  field.classList.add('input-error');
+}
+
+function removeErrorStyles() {
+  document.querySelectorAll('.input-error').forEach(field => {
+    field.classList.remove('input-error');
+  });
+}
 
 //==============================Esfera==============================
 const words = [
