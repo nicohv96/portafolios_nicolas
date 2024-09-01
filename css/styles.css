@@ -7,6 +7,10 @@
   --background-color-active: #25283ad0;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -956,6 +960,7 @@ nav ul li a:active {
 .form-group input,
 .form-group textarea {
   width: 100%;
+  font-family: "roboto_light";
   padding: 10px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
