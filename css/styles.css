@@ -640,6 +640,7 @@ nav ul li a:active {
   padding: 10px;
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
+  border-left: 5px solid #59eaf7;
 }
 
 .first-section, .second-section {
