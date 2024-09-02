@@ -616,12 +616,12 @@ nav ul li a:active {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .content-text-educaction h4 {
   font-size: 1.2em;
-  margin-bottom: 10px;
+  margin: 10px 0;
   max-width: 965px;
   width: 100%;
 }
@@ -630,10 +630,16 @@ nav ul li a:active {
   margin-bottom: 10px;
 }
 
+.content-text-educaction ul {
+  width: 100%;
+}
+
 .content-text-educaction ul li {
   list-style: none;
   margin-bottom: 20px;
-  border-bottom: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
 }
 
 .first-section, .second-section {
@@ -719,6 +725,7 @@ nav ul li a:active {
 }
 
 .content-sphere {
+  aspect-ratio: 1 / 1;
   height: auto;
   display: flex;
   justify-content: center;
@@ -1256,7 +1263,7 @@ textarea:focus-visible {
   }
 
   .stat-card h2 {
-    font-size: 1.5em;
+    font-size: 2rem;
   }
   
   .stat-card p {

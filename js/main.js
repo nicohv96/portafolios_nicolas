@@ -40,6 +40,10 @@ window.addEventListener("scroll", () => {
 
 //==============================Email==============================
 
+function getToastPosition() {
+  return window.innerWidth <= 798 ? 'top' : 'top-end';
+}
+
 document.getElementById('form-contact').addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -53,8 +57,8 @@ document.getElementById('form-contact').addEventListener('submit', function(e) {
 
   Swal.fire({
     toast: true,
-    position: 'top-end',
-    title: 'Procesando la solicitud',
+    position: getToastPosition(), // Usar la posición determinada
+    title: 'Procesando la solicitud...',
     showConfirmButton: false,
     didOpen: () => {
       Swal.showLoading();
@@ -73,9 +77,7 @@ document.getElementById('form-contact').addEventListener('submit', function(e) {
       Mensaje: message
     })
   })
-  .then(response => {
-    return response.json();
-  })
+  .then(response => response.json())
   .then(data => {
     if (data.success === "false") {
       throw new Error(data.message);
@@ -85,9 +87,9 @@ document.getElementById('form-contact').addEventListener('submit', function(e) {
 
     Swal.fire({
       toast: true,
-      position: 'top-end',
+      position: getToastPosition(), // Usar la misma posición
       icon: 'success',
-      title: 'Formulario enviado con éxito',
+      title: 'Formulario enviado con éxito.',
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true
@@ -100,9 +102,9 @@ document.getElementById('form-contact').addEventListener('submit', function(e) {
 
     Swal.fire({
       toast: true,
-      position: 'top-end',
+      position: toastPosition, // Usar la misma posición
       icon: 'error',
-      title: 'Hubo un error al enviar el formulario. Intenta de nuevo.',
+      title: 'Hubo un error al enviar el formulario. Intentalo de nuevo.',
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true
@@ -149,7 +151,7 @@ function showValidationError(message) {
     title: 'Error de validación',
     text: message,
     toast: true,
-    position: 'top-end',
+    position: getToastPosition(),
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true
