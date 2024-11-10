@@ -6,6 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Portafolio - Nicolas Villalba</title>
    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+   <link rel="stylesheet" href="./assets/normalize/normalize.css">
    <link rel="stylesheet" href="./assets/sweetalert2/css/sweetalert2.min.css">
    <link rel="stylesheet" href="./css/styles.css">
 </head>
@@ -83,10 +84,13 @@
          <div class="content-about-me">
             <div class="text-about-me">
                <p>
-                  Soy analista en T.I.C. y Desarrollador web orientado al Backend. Con un enfoque en el aprendizaje
-                  constante y una actitud proactiva. Aplico mis habilidades y conocimientos, demostrando siempre
-                  responsabilidad, disciplina y motivación para ofrecer un desempeño de alta calidad en cada proyecto en
-                  el que participe.
+                  Soy una persona curiosa y práctica, siempre estoy buscando aprender nuevas tecnologías para mejorar mis habilidades y asi poder crear soluciones mas efectivas y funcionales.
+               </p>
+               <p>
+                  Me motiva la idea de que mi trabajo pueda hacer una diferencia, ya sea con un proyecto que resuelva un problema específico o al contribuir en el desarrollo de herramientas que faciliten la vida de los usuarios. Valoro la integridad en mi trabajo, ya que siento que la honestidad y la transparencia son fundamentales para lograr los mejores resultados.
+               </p>
+               <p>
+                  Creo que la combinación de mi pasión por lo que hago y mi voluntad de seguir aprendiendo me impulsa a crecer continuamente, tanto en lo personal como en lo profesional.
                </p>
             </div>
             <div class="stats-container">
@@ -113,14 +117,14 @@
          <div class="content-education">
             <div class="subtitle-section-education">
                <div class="p-education">
-                  <h4>T&iacute;tulo y certificados</h4>
+                  <h4>T&iacute;tulo</h4>
                </div>
             </div>
             <div class="content-text-educaction">
                <div class="first-section">
                   <ul>
                      <li>
-                        <h4>Analista en Tecnologías de la Información y Comunicación</h4>
+                        <h4>Analista en Tecnologías de la Información y Comunicación (TIC)</h4>
                         <p>
                            Universidad Nacional de Formosa (UNaF)
                         </p>
@@ -130,14 +134,21 @@
                      </li>
                   </ul>
                </div>
+            </div>
+            <div class="subtitle-section-education">
+               <div class="p-education">
+                  <h4>Certificaciones</h4>
+               </div>
+            </div>
+            <div class="content-text-educaction">
                <div class="second-section">
                   <ul>
                      <li>
                         <h4>Certificado de Full Stack Python</h4>
                         <p>
-                           Otorgado por codo a codo.
+                           Otorgado por la Agencia de Habilidades para el Futuro.
                         </p>
-                     </li>
+                     </li>                   
                      <li>
                         <h4>Certificado de JavaScript moderno y programación funcional</h4>
                         <p>
@@ -272,11 +283,6 @@
                   </div>
                </div>
             </div>
-            <div class="content-section">
-               <div class="content-sphere">
-                  <div class="sphere" id="sphere"></div>
-               </div>
-            </div>
          </div>
       </section>
 
@@ -345,11 +351,11 @@
                <form id="form-contact" method="post">
                   <div class="form-group">
                      <label for="name">Nombre:</label>
-                     <input type="text" id="name" name="name" placeholder="Ingrese su nombre">
+                     <input type="text" id="name" name="name" placeholder="Ingrese su nombre" autocomplete="name">
                   </div>
                   <div class="form-group">
                      <label for="email">Email:</label>
-                     <input type="email" id="email" name="email" placeholder="Ingrese su correo">
+                     <input type="email" id="email" name="email" placeholder="Ingrese su correo" autocomplete="email">
                   </div>
                   <div class="form-group">
                      <label for="message">Mensaje:</label>

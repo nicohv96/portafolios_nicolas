@@ -87,7 +87,7 @@ document.getElementById('form-contact').addEventListener('submit', function(e) {
 
     Swal.fire({
       toast: true,
-      position: getToastPosition(), // Usar la misma posición
+      position: getToastPosition(),
       icon: 'success',
       title: 'Formulario enviado con éxito.',
       showConfirmButton: false,
@@ -102,7 +102,7 @@ document.getElementById('form-contact').addEventListener('submit', function(e) {
 
     Swal.fire({
       toast: true,
-      position: toastPosition, // Usar la misma posición
+      position: toastPosition,
       icon: 'error',
       title: 'Hubo un error al enviar el formulario. Intentalo de nuevo.',
       showConfirmButton: false,
@@ -168,64 +168,9 @@ function removeErrorStyles() {
   });
 }
 
-//==============================Esfera==============================
-const words = [
-  'Python', 'JavaScript', 'Java', 'PHP', 'HTML', 'CSS', 'Flask', 'MySQL', 'Laravel', 'Vue.js', 'Git', 'Bootstrap'
-];
-
-const sphere = document.getElementById('sphere');
-const radius = 120;
-const wordElements = [];
-const numWords = words.length;
-
-words.forEach((word, index) => {
-  // Distribución uniforme usando la fórmula de la esfera de Fibonacci
-  const phi = Math.acos(1 - (2 * (index + 0.5)) / numWords);
-  const theta = Math.PI * (1 + Math.sqrt(5)) * (index + 0.5);
-
-  const x = radius * Math.sin(phi) * Math.cos(theta);
-  const y = radius * Math.sin(phi) * Math.sin(theta);
-  const z = radius * Math.cos(phi);
-
-  const wordElement = document.createElement('div');
-  wordElement.className = 'word';
-  wordElement.textContent = word;
-  wordElement.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
-
-  sphere.appendChild(wordElement);
-  wordElements.push(wordElement);
-});
-
-let angleX = 0;
-let angleY = 0;
-
-function rotateSphere() {
-  angleX += 0.01; // Velocidad de rotación en X
-  angleY += 0.02; // Velocidad de rotación en Y
-
-  sphere.style.transform = `rotateX(${angleX}rad) rotateY(${angleY}rad)`;
-
-  wordElements.forEach(word => {
-    const transform = word.style.transform;
-    const coordinates = transform.match(/translate3d\((.*)\)/)[1].split(', ').map(parseFloat);
-    const [x, y, z] = coordinates;
-
-    // Mantener la orientación de las palabras frente a la cámara
-    const angleYWord = Math.atan2(x, z);
-    const angleXWord = Math.atan2(y, Math.sqrt(x * x + z * z));
-
-    word.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateY(${angleYWord}rad) rotateX(${-angleXWord}rad)`;
-  });
-
-  requestAnimationFrame(rotateSphere);
-}
-
-rotateSphere(); // Inicia la rotación
-
-
 document.querySelectorAll('.btn').forEach(button => {
   button.addEventListener('click', function() {
-    this.blur(); // Quita el foco del botón después del clic
+    this.blur();
   });
 });
 

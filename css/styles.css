@@ -9,10 +9,11 @@
 
 html{
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
-* {
-  box-sizing: border-box;
+*, *:before, *:after {
+  box-sizing: inherit;
   margin: 0;
   padding: 0;
 }
@@ -41,6 +42,10 @@ body {
 
 h3 {
   font-family: "varino", sans-serif;
+}
+
+h4 {
+  font-size: 1.2em;
 }
 
 /*===============================Estilos genericos===============================*/
@@ -388,7 +393,7 @@ nav ul li a:active {
   width: 100%;
   display: flex;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
 .content-hero-section {
@@ -560,6 +565,10 @@ nav ul li a:active {
   font-size: 1.2em;
 }
 
+.text-about-me p {
+  margin-bottom: 10px;
+}
+
 .stats-container {
   width: 50%;
   display: flex;
@@ -578,7 +587,8 @@ nav ul li a:active {
   color: #ffffff;
   padding: 20px;
   border-radius: var(--border-radius);
-  width: 130px;
+  width: 150px;
+  height: 120px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
@@ -615,42 +625,52 @@ nav ul li a:active {
 .content-text-educaction {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .content-text-educaction h4 {
-  font-size: 1.2em;
+  font-size: 1.6em;
   margin: 10px 0;
   max-width: 965px;
   width: 100%;
 }
 
 .content-text-educaction p {
+  font-size: 1.2em;
   margin-bottom: 10px;
 }
 
 .content-text-educaction ul {
   width: 100%;
+  margin-bottom: 20px;
+  padding: 20px 50px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  border-left: 5px solid #59eaf7;
+  background: linear-gradient(135deg, rgba(17, 19, 31, 0.1), rgba(47, 56, 93, 0.1), rgba(65, 80, 136, 0.1)); /* Degradado con colores específicos */
+  backdrop-filter: blur(2px); /* Desenfoque */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
 .content-text-educaction ul li {
   list-style: none;
-  margin-bottom: 20px;
-  padding: 10px;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  border-left: 5px solid #59eaf7;
 }
 
-.first-section, .second-section {
-  width: 45%;
-  max-width: 500px;
+.first-section, .second-section  {
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: start;
-  flex-direction: column;
-  text-align: left;
+  align-items: center;
+}
+
+.content-text-educaction .second-section ul li {
+  list-style: circle;
+  margin-bottom: 50px;
+}
+
+.content-text-educaction .second-section ul li:last-child {
+  margin-bottom: 0;
 }
 
 /*===============================Habilidades===============================*/
@@ -675,7 +695,7 @@ nav ul li a:active {
 .skills-grid {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 30px;
@@ -692,9 +712,10 @@ nav ul li a:active {
   flex-direction: column;
   border: 2px solid var(--border-color);
   border-radius: 50%;
-  background: radial-gradient(#515463, #32364b, #1c1f2e, #121420);
+  backdrop-filter: blur(2px); /* Desenfoque */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  background: radial-gradient(#51546380, #32364b80, #1c1f2e80, #12142080);
   padding: 20px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
@@ -706,6 +727,17 @@ nav ul li a:active {
   margin-bottom: 5px;
 }
 
+/*
+.skill-img img {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.skill-card:hover .skill-img img {
+  filter: grayscale(0%);
+}
+*/
+
 .skill-title {
   display: flex;
   justify-content: center;
@@ -714,6 +746,7 @@ nav ul li a:active {
 }
 
 .skill-title h4 {
+  font-size: 1em;
   cursor: default;
 }
 
@@ -938,7 +971,6 @@ nav ul li a:active {
 
 .form-container {
   width: 45%;
-  background-color: var(--background-color-1);
   padding: 20px 40px;
   border-radius: var(--border-radius);
   border-top: 5px solid #ff6699;
@@ -946,7 +978,9 @@ nav ul li a:active {
   border-bottom: 2px solid var(--border-color);
   border-left: 2px solid var(--border-color);
   max-width: 500px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, rgba(17, 19, 31, 0.1), rgba(47, 56, 93, 0.1), rgba(65, 80, 136, 0.1)); /* Degradado con colores específicos */
+  backdrop-filter: blur(2px); /* Desenfoque */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
   overflow: hidden;
 }
 
@@ -1299,7 +1333,7 @@ textarea:focus-visible {
   box-shadow: 0px 2px 5px #00000080;
   opacity: 0;
   visibility: hidden;
-  transition: background-color .5s ease, transform .5s ease;
+  transition: .5s ease;
 }
 
 .top-button:hover {
