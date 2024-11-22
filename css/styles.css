@@ -22,11 +22,13 @@ html{
 @font-face {
   font-family: "varino";
   src: url("../fonts/varino.ttf") format("truetype");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "roboto_light";
   src: url("../fonts/roboto_light.ttf") format("truetype");
+  font-display: swap;
 }
 
 /*===============================Estilos a etiquetas===============================*/
